@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import RILogo from "../assets/Rhodes Island.png";
 
 const Footer = () => (
   <footer className="border-t border-border bg-background">
@@ -7,7 +8,7 @@ const Footer = () => (
         <div>
           <div className="flex items-center gap-2 mb-4">
             <div className="w-50 flex items-center justify-center">
-              <img src="src\assets\Rhodes Island.png" alt="Rhodes Island" />
+              <img src={RILogo} alt="Rhodes Island" />
             </div>
           </div>
           <p className="text-muted-foreground text-sm leading-relaxed">
