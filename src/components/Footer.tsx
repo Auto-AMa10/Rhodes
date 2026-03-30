@@ -6,42 +6,61 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 border border-primary/50 flex items-center justify-center">
-              <span className="text-primary font-heading font-bold text-sm">RI</span>
+            <div className="w-50 flex items-center justify-center">
+              <img src="src\assets\Rhodes Island.png" alt="Rhodes Island" />
             </div>
-            <span className="font-heading font-bold text-lg tracking-wider">
-              RHODES<span className="text-primary">PHARMA</span>
-            </span>
           </div>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            Advancing pharmaceutical science for a safer tomorrow.
+            May I enjoy my life and practice my art, respected by all men and in all times.
           </p>
         </div>
 
         <div>
-          <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-4">Navigation</h4>
+          <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-4">
+            Navigation
+          </h4>
           <div className="space-y-2">
             {["/", "/about", "/teams", "/products"].map((path) => (
-              <Link key={path} to={path} className="block text-sm text-muted-foreground hover:text-foreground transition-colors">
-                {path === "/" ? "Home" : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+              <Link
+                key={path}
+                to={path}
+                className="block text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {path === "/"
+                  ? "Home"
+                  : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
               </Link>
             ))}
           </div>
         </div>
 
         <div>
-          <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-4">Resources</h4>
+          <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-4">
+            Resources
+          </h4>
           <div className="space-y-2">
-            {["Documentation", "Research Papers", "Clinical Trials", "Safety Data"].map((item) => (
-              <span key={item} className="block text-sm text-muted-foreground cursor-default">{item}</span>
+            {[
+              "Documentation",
+              "Research Papers",
+              "Clinical Trials",
+              "Safety Data",
+            ].map((item) => (
+              <span
+                key={item}
+                className="block text-sm text-muted-foreground cursor-default"
+              >
+                {item}
+              </span>
             ))}
           </div>
         </div>
 
         <div>
-          <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-4">Contact</h4>
+          <h4 className="font-heading font-semibold text-sm uppercase tracking-widest text-primary mb-4">
+            Contact
+          </h4>
           <div className="space-y-2 text-sm text-muted-foreground">
-            <p>ops@rhodespharma.io</p>
+            <p>zoot@PRTS.io</p>
             <p>+1 (555) 0199</p>
             <p>Rhodes Island HQ</p>
           </div>
@@ -50,7 +69,7 @@ const Footer = () => (
 
       <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-xs text-muted-foreground font-mono tracking-wider">
-          © 2026 RHODES PHARMACEUTICAL — ALL RIGHTS RESERVED
+          © 2026 RHODES ISLAND PHARMACEUTICAL INC. — ALL RIGHTS RESERVED
         </p>
         <p className="text-xs text-muted-foreground font-mono tracking-wider">
           SYS.STATUS: <span className="text-primary">OPERATIONAL</span>
