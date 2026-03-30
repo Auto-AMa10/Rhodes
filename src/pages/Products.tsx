@@ -14,11 +14,32 @@ const products: Product[] = [
 
 const categories = [...new Set(products.map((p) => p.category))];
 
+const testimonials = [
+  {
+    id: "t1",
+    name: "Ch'en Hui-chieh",
+    role: "Lead Researcher",
+    message: "The RI-07 Inhibitor has revolutionized early infection management in our lab trials. Reliable and effective.",
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    id: "t2",
+    name: "Captain Lars Holm",
+    role: "Field Operations Officer",
+    message: "The Containment Suite made our hazardous zone operations significantly safer and more efficient.",
+    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+];
+
 const Products = () => (
   <MainLayout>
     <section className="py-20">
       <div className="container mx-auto px-4">
-        <SectionHeader label="Arsenal" title="Products & Services" description="Pharmaceutical solutions and operational equipment developed for extreme conditions." />
+        <SectionHeader
+          label="Arsenal"
+          title="Products & Services"
+          description="Pharmaceutical solutions and operational equipment developed for extreme conditions."
+        />
 
         {categories.map((cat) => (
           <div key={cat} className="mb-12">
@@ -32,6 +53,41 @@ const Products = () => (
             </div>
           </div>
         ))}
+
+        {/* Testimonials Section as a “category” */}
+<div className="mb-12">
+  <h3 className="font-heading font-semibold text-sm uppercase tracking-[0.2em] text-primary mb-4 border-b border-border pb-2">
+    Testimonials
+  </h3>
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {testimonials.map((t) => (
+      <div
+        key={t.id}
+        className="relative bg-white border border-border rounded-xl p-6 flex flex-col"
+      >
+        {/* Speech bubble pointer */}
+        <div className="absolute -bottom-3 left-6 w-0 h-0 border-t-6 border-t-white border-l-6 border-l-transparent border-r-6 border-r-transparent"></div>
+
+        {/* Avatar */}
+        <div className="flex items-center mb-4">
+          <img
+            src={t.avatar}
+            alt={t.name}
+            className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-primary"
+          />
+          <div>
+            <h4 className="font-semibold">{t.name}</h4>
+            <p className="text-sm text-gray-500">{t.role}</p>
+          </div>
+        </div>
+
+        {/* Quote */}
+        <p className="text-gray-700 italic">"{t.message}"</p>
+      </div>
+    ))}
+  </div>
+</div>
+
       </div>
     </section>
   </MainLayout>

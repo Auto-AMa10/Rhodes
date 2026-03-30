@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../stores/useAuth";
+import RILogo from "../assets/Rhodes Island.png";
 
 const baseNavLinks = [
   { to: "/", label: "Home" },
@@ -20,7 +21,7 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2">
           <div className="w-50 flex items-center justify-center">
-          <img src="src\assets\Rhodes Island.png" alt="Rhodes Island" />
+          <img src={RILogo} alt="Rhodes Island" />
           </div>
         </Link>
 
