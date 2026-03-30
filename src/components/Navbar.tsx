@@ -1,18 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useAuth } from "../stores/useAuth";
 
-const navLinks = [
+const baseNavLinks = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/teams", label: "Teams" },
   { to: "/products", label: "Products" },
-  { to: "/blog", label: "Blog" },
-  { to: "/auth", label: "Access" },
+  { to: "/blogs", label: "Blog" },
 ];
 
 const Navbar = () => {
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/80 backdrop-blur-xl">
@@ -25,7 +26,7 @@ const Navbar = () => {
 
         {/* Desktop */}
         <div className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
+          {baseNavLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
@@ -38,6 +39,37 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          {user ? (
+            <>
+              <Link
+                to="/blogs/create"
+                className={`px-3 py-2 text-sm font-medium tracking-wider uppercase transition-colors ${
+                  location.pathname === "/blog/create"
+                    ? "text-primary glow-text"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                BlogCreate
+              </Link>
+              <button
+                onClick={logout}
+                className="px-3 py-2 text-sm bg-red-500 rounded-lg text-white font-medium tracking-wider uppercase hover:bg-white hover:text-red-500 transition-colors duration-300 ease-in-out"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/auth"
+              className={`px-3 py-2 text-sm font-medium tracking-wider uppercase transition-colors ${
+                location.pathname === "/auth"
+                  ? "text-primary glow-text"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              Access
+            </Link>
+          )}
         </div>
 
         {/* Mobile toggle */}
@@ -56,7 +88,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
-          {navLinks.map((link) => (
+          {baseNavLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
@@ -70,6 +102,38 @@ const Navbar = () => {
               {link.label}
             </Link>
           ))}
+          {user ? (
+            <>
+              <Link
+                to="/blog/create"
+                onClick={() => setMobileOpen(false)}
+                className={`block px-6 py-3 text-sm font-medium tracking-wider uppercase border-b border-border/50 ${
+                  location.pathname === "/blog/create"
+                    ? "text-primary"
+                    : "text-muted-foreground"
+                }`}
+              >
+                BlogCreate
+              </Link>
+              <button
+                onClick={() => {
+                  logout();
+                  setMobileOpen(false);
+                }}
+                className="block w-full text-left px-6 py-3 text-sm bg-red-500 rounded-lg text-white font-medium tracking-wider uppercase hover:bg-white hover:text-red-500 transition-colors duration-300 ease-in-out"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/auth"
+              onClick={() => setMobileOpen(false)}
+              className="block px-6 py-3 text-sm font-medium tracking-wider uppercase border-b border-border/50 text-muted-foreground"
+            >
+              Access
+            </Link>
+          )}
         </div>
       )}
     </nav>

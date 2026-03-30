@@ -6,10 +6,10 @@ import type { Product } from "../types";
 const products: Product[] = [
   { id: "1", name: "RI-07 Inhibitor", description: "Originium-based pathogen inhibitor for early-stage infection management.", category: "Therapeutics", image: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80" },
   { id: "2", name: "RI-13 Compound", description: "Advanced antiviral compound targeting mineral-based cellular degradation.", category: "Therapeutics", image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80" },
-  { id: "3", name: "MedKit Mk.IV", description: "Field-deployable medical kit with integrated diagnostics and treatment modules.", category: "Field Equipment", image: "https://images.unsplash.com/photo-1603398938378-e54eab446dde?w=800&q=80" },
+  { id: "3", name: "MedKit Mk.IV", description: "Field-deployable medical kit with integrated diagnostics and treatment modules.", category: "Field Equipment", image: "https://images.unsplash.com/photo-1624638760852-8ede1666ab07?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
   { id: "4", name: "Containment Suite", description: "Portable biological containment system for hazardous zone operations.", category: "Field Equipment", image: "https://images.pexels.com/photos/9545082/pexels-photo-9545082.jpeg" },
-  { id: "5", name: "ORI-Scanner", description: "Handheld Originium density scanner for rapid environmental assessment.", category: "Diagnostics", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80" },
-  { id: "6", name: "BioSync Monitor", description: "Continuous vital signs monitoring device with cloud telemetry.", category: "Diagnostics", image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?w=800&q=80" },
+  { id: "5", name: "ORI-Scanner", description: "Handheld Originium density scanner for rapid environmental assessment.", category: "Diagnostics", image: "https://plus.unsplash.com/premium_photo-1664299150453-f1a386826e6d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  { id: "6", name: "BioSync Monitor", description: "Continuous vital signs monitoring device with cloud telemetry.", category: "Diagnostics", image: "https://images.unsplash.com/photo-1645685491865-42a4fbbc9912?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
 ];
 
 const categories = [...new Set(products.map((p) => p.category))];

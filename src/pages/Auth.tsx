@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import RIButton from "../components/RIButton";
 import { RIInput } from "../components/RIInput";
@@ -6,6 +7,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { axiosInstance } from "../lib/axios";
+import { useAuth } from "../stores/useAuth";
 
 const FormSchema = z.object({
   fullName: z.string().optional(),
@@ -20,6 +22,8 @@ type FormValues = z.infer<typeof FormSchema>;
 const Auth = () => {
   const [tab, setTab] = useState<"login" | "register">("login");
   const [isPending, setIsPending] = useState(false);
+  const navigate = useNavigate();
+  const { login } = useAuth();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(FormSchema),
@@ -31,11 +35,18 @@ const Auth = () => {
   try {
     if (tab === "login") {
       // Login API
-      await axiosInstance.post("/users/login", {
+      const response = await axiosInstance.post("/users/login", {
         login: values.email,
         password: values.password,
       });
-      alert("Login success!");
+      const userData = response.data;
+      login({
+        name: userData.name || userData.fullName || values.email,
+        email: userData.email || values.email,
+        objectId: userData.objectId || userData.id || userData._id || "",
+        userToken: userData.userToken || userData.token || "",
+      });
+      navigate("/");
     } else {
       // Register API
       await axiosInstance.post("/users/register", {
@@ -44,7 +55,7 @@ const Auth = () => {
         password: values.password,
       });
       alert("Registration success! You can now log in.");
-      setTab("login"); // Switch to login after successful registration
+      setTab("login");
     }
   } catch (error) {
     console.log(error);
